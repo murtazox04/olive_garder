@@ -1,0 +1,7 @@
+Django==5.0.6
+django-unfold==0.22.0
+djangorestframework==3.15.1
+python-decouple==3.8
+uvicorn==0.29.0
+django-debug-toolbar==4.3.0
+payme-pkg==2.6.6
