@@ -1,4 +1,5 @@
 from decouple import config
+
 from . import BASE_DIR, INSTALLED_APPS, MIDDLEWARE
 
 DEBUG = config('DEBUG', default=True, cast=bool)
@@ -36,7 +37,7 @@ DEBUG_TOOLBAR_PANELS = [
 
 DEBUG_TOOLBAR_CONFIG = {
     # Display only for staff members
-    # 'SHOW_TOOLBAR_CALLBACK': lambda request: request.user.is_staff,
+    # 'SHOW_TOOLBAR_CALLBACK': lambda request: request.users.is_staff,
     'RESULTS_CACHE_SIZE': 5,  # Store more query results for analysis
     'SQL_WARNING_THRESHOLD': 50,  # Lower threshold for quicker SQL query warnings
     'TAG': 'div',  # Change the toolbar tag to div

@@ -1,3 +1,6 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 
-# Register your models here.
+from .models import Order
+
+admin.site.register(Order, ModelAdmin)

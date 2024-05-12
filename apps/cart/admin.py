@@ -1,3 +1,7 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 
-# Register your models here.
+from .models import CartItem, Cart
+
+admin.site.register(CartItem, ModelAdmin)
+admin.site.register(Cart, ModelAdmin)

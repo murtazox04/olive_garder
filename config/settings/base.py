@@ -24,11 +24,11 @@ INSTALLED_APPS = [
 
     'payme',
     'rest_framework',
-    'user.apps.UserConfig',
-    'order.apps.OrderConfig',
-    'menu.apps.MenuConfig',
-    'food.apps.FoodConfig',
-    'cart.apps.CartConfig',
+    'apps.users.apps.UsersConfig',
+    'apps.order.apps.OrderConfig',
+    'apps.menu.apps.MenuConfig',
+    'apps.food.apps.FoodConfig',
+    'apps.cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # all payme credentials are test mode
 PAYME: dict = {
     'PAYME_ID': config("PAYME_ID"),
@@ -72,8 +71,7 @@ PAYME: dict = {
     'PAYME_ACCOUNT': config("PAYME_ACCOUNT"),
 }
 
-ORDER_MODEL = 'order.models.CustomOrderModel'
-
+ORDER_MODEL = 'apps.order.models.Order'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -89,7 +87,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 LANGUAGE_CODE = 'en-us'
 
@@ -108,6 +105,8 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "users.User"
 
 UNFOLD = {
     "show_search": True,
