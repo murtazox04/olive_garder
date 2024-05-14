@@ -6,6 +6,7 @@ from apps.cart.models import Cart
 class Order(models.Model):
     amount = models.IntegerField()
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    is_paid = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
