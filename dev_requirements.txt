@@ -5,4 +5,5 @@ djangorestframework==3.15.1
 python-decouple==3.8
 confluent-kafka==2.3.0
 django-debug-toolbar==4.3.0
+django-modeltranslation==0.18.11
 django-import-export==4.0.1

@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     "unfold.contrib.guardian",  # optional, if django-guardian package is used
     # optional, if django-simple-history package is used
     "unfold.contrib.simple_history",
+    "modeltranslation",
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -22,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'payme',
     'rest_framework',
     'apps.users.apps.UsersConfig',
     'apps.order.apps.OrderConfig',
@@ -61,18 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# all payme credentials are test mode
-PAYME: dict = {
-    'PAYME_ID': config("PAYME_ID"),
-    'PAYME_KEY': config("PAYME_KEY"),
-    'PAYME_URL': config("PAYME_URL"),
-    'PAYME_CALL_BACK_URL': config("PAYME_CALL_BACK_URL"),
-    'PAYME_MIN_AMOUNT': config("PAYME_MIN_AMOUNT", default=0),
-    'PAYME_ACCOUNT': config("PAYME_ACCOUNT"),
-}
-
-ORDER_MODEL = 'apps.order.models.Order'
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -88,13 +76,34 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz-oz'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),  # noqa
+)
+
+
+def gettext(s): return s
+
+
+LANGUAGES = (
+    ('uz', gettext('Uzbek')),
+    ('ru', gettext('Russian')),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
+MODELTRANSLATION_LANGUAGES = ('uz', 'ru')
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('uz', 'ru')
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'apps.translations',
+)
 
 STATIC_URL = "static/"
 
@@ -111,6 +120,16 @@ AUTH_USER_MODEL = "users.User"
 UNFOLD = {
     "show_search": True,
     "show_all_applications": True,
+    "SITE_TITLE": 'Olive Garden Admin Panel',
+    "SITE_HEADER": 'Olive Garden',
     # to see all configurations, visit here:
     # https://github.com/unfoldadmin/django-unfold?tab=readme-ov-file#configuration
+    "EXTENSIONS": {
+        "modeltranslation": {
+            "flags": {
+                "uz": "🇺🇿",
+                "ru": "🇷🇺",
+            },
+        },
+    },
 }
