@@ -11,11 +11,11 @@ MIDDLEWARE.append('corsheaders.middleware.CorsMiddleware')
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_NAME"),
-        "USER": config("DB_USER"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOST"),
-        "PORT": config("DB_PORT"),
+        "NAME": "olive_garden_admin",  # Make sure this matches POSTGRES_DB
+        "USER": "root",  # Make sure this matches POSTGRES_USER
+        "PASSWORD": "root",  # Make sure this matches POSTGRES_PASSWORD
+        "HOST": "admin_db",  # This should match the service name in docker-compose.yml
+        "PORT": "5432",
     }
 }
 

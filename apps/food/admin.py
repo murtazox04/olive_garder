@@ -3,10 +3,10 @@ from django.utils.html import format_html
 from unfold.admin import ModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin
 
-from .models import FoodCategory, Food
+from .models import Category, Food
 
-@admin.register(FoodCategory)
-class FoodCategoryAdmin(ModelAdmin, TabbedTranslationAdmin):
+@admin.register(Category)
+class CategoryAdmin(ModelAdmin, TabbedTranslationAdmin):
     list_display = ('id', 'name')
     search_fields = ('name',)
 

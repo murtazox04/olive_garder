@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.users.apps.UsersConfig',
     'apps.order.apps.OrderConfig',
-    'apps.menu.apps.MenuConfig',
     'apps.food.apps.FoodConfig',
     'apps.cart.apps.CartConfig',
 ]

@@ -1,12 +1,27 @@
-FROM python:3.10-alpine
+# Use the official Python image from the Docker Hub
+FROM python:3.10-slim
 
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Upgrade pip
 RUN pip install --upgrade pip
 
+# Set the working directory
 WORKDIR /app
-COPY ./ ./
 
-COPY ./admin/requirements.txt /.
-RUN pip install -r requirements.txt
+# Copy only requirements.txt first to leverage Docker cache
+COPY ./requirements.txt ./
 
-RUN ["chmod", "+x", "./admin/entrypoint.sh"]
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . /app
+
+# Ensure entrypoint script is executable
+RUN ["chmod", "+x", "./docker/admin/entrypoint.sh"]
+
+# Set the entrypoint
 ENTRYPOINT ["./docker/admin/entrypoint.sh"]

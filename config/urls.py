@@ -22,6 +22,8 @@ from decouple import config
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/food/', include('apps.food.urls')),
+    path('api/v1/', include('apps.cart.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

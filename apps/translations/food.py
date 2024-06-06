@@ -1,10 +1,10 @@
 from modeltranslation.translator import TranslationOptions, register
 
-from apps.food.models import FoodCategory, Food
+from apps.food.models import Category, Food
 
 
-@register(FoodCategory)
-class FoodCategoryTranslationOptions(TranslationOptions):
+@register(Category)
+class CategoryTranslationOptions(TranslationOptions):
     fields = ('name',)
 
 
